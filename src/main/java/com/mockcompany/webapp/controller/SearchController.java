@@ -95,7 +95,7 @@ public class SearchController {
                 exactSearch = true;
                 modifiedQuery = query.substring(1, query.length()-1);
             }else {
-                modifiedQuery = query.substring(1, query.length()-1);
+                modifiedQuery = query.toLowerCase();
             }
 
             // Run condition based on match type and add to itemList if true.
@@ -104,7 +104,8 @@ public class SearchController {
                     itemList.add(item);
                 }
             }else {
-                if(item.getName().contains(modifiedQuery) || item.getDescription().contains(modifiedQuery)) {
+                if((item.getName().toLowerCase()).contains(modifiedQuery) ||
+                        (item.getDescription().toLowerCase()).contains(modifiedQuery)) {
                     itemList.add(item);
                 }
             }
